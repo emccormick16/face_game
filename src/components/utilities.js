@@ -1,4 +1,3 @@
-//  Triangulation sets of three
 export const TRIANGULATION = [
   127, 34, 139, 11, 0, 37, 232, 231, 120, 72, 37, 39, 128, 121, 47, 232, 121,
   128, 104, 69, 67, 175, 171, 148, 157, 154, 155, 118, 50, 101, 73, 39, 40, 9,
@@ -167,47 +166,43 @@ export const TRIANGULATION = [
   372, 353, 390, 339, 249, 339, 448, 255,
 ];
 
-// Triangle drawing method
 const drawPath = (ctx, points, closePath) => {
   const region = new Path2D();
-  region.moveTo(points[0][0], points[0][1]);
+  region.moveTo(points[0].x, points[0].y);
   for (let i = 1; i < points.length; i++) {
     const point = points[i];
-    region.lineTo(point[0], point[1]);
+    region.lineTo(point.x, point.y);
   }
 
   if (closePath) {
     region.closePath();
   }
+
   ctx.strokeStyle = "grey";
   ctx.stroke(region);
 };
 
-// Drawing Mesh
 export const drawMesh = (predictions, ctx) => {
   if (predictions.length > 0) {
     predictions.forEach((prediction) => {
-      const keypoints = prediction.scaledMesh;
+      const keyPoints = prediction.keypoints;
 
-      //  Draw Triangles
       for (let i = 0; i < TRIANGULATION.length / 3; i++) {
-        // Get sets of three keypoints for the triangle
         const points = [
           TRIANGULATION[i * 3],
           TRIANGULATION[i * 3 + 1],
           TRIANGULATION[i * 3 + 2],
-        ].map((index) => keypoints[index]);
-        //  Draw triangle
+        ].map((index) => keyPoints[index]);
+
         drawPath(ctx, points, true);
       }
 
-      // Draw Dots
-      for (let i = 0; i < keypoints.length; i++) {
-        const x = keypoints[i][0];
-        const y = keypoints[i][1];
+      for (let i = 0; i < keyPoints.length; i++) {
+        const x = keyPoints[i].x;
+        const y = keyPoints[i].y;
 
         ctx.beginPath();
-        ctx.arc(x, y, 1 /* radius */, 0, 3 * Math.PI);
+        ctx.arc(x, y, 1, 0, 3 * Math.PI);
         ctx.fillStyle = "aqua";
         ctx.fill();
       }
