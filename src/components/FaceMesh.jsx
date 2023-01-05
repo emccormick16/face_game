@@ -59,7 +59,7 @@ const FaceMesh = () => {
             left: 0,
             right: 0,
             textAlign: "center",
-            zIndex: 9,
+            zIndex: 1,
             width: 640,
             height: 480,
           }}
@@ -74,7 +74,7 @@ const FaceMesh = () => {
             left: 0,
             right: 0,
             textAlign: "center",
-            zIndex: 9,
+            zIndex: 1,
             width: 640,
             height: 480,
           }}
