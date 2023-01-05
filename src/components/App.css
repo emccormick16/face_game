@@ -1,0 +1,36 @@
+.main {
+  text-align: center;
+  color: #303030;
+}
+
+/* Field params */
+.field {
+  height: 500px;
+  background-color: #f8f8f8;
+  border: 0.5px solid rgba(130, 130, 130, 0.5);
+  position: relative;
+  overflow-y: hidden;
+  margin: 1em 2em;
+}
+
+/* Dot positioning */
+.dot {
+  border: 0.5px solid rgba(130, 130, 130, 0.5);
+  opacity: 0.8;
+  border-radius: 50%;
+  position: absolute;
+}
+
+p {
+  margin: 0.5em;
+}
+
+button {
+  background-color: #f8f8f8;
+  border: 1px solid #bbbbbb;
+  border-radius: 3px;
+  padding: 6px 18px;
+  margin: 12px;
+  color: #303030;
+  letter-spacing: 0.1em;
+}

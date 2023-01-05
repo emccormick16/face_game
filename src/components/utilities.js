@@ -1,3 +1,5 @@
+import { MAX_POINTS, COLORS, SIZES } from "./constants";
+
 export const TRIANGULATION = [
   127, 34, 139, 11, 0, 37, 232, 231, 120, 72, 37, 39, 128, 121, 47, 232, 121,
   128, 104, 69, 67, 175, 171, 148, 157, 154, 155, 118, 50, 101, 73, 39, 40, 9,
@@ -208,4 +210,29 @@ export const drawMesh = (predictions, ctx) => {
       }
     });
   }
+};
+
+export const createDot = () => {
+  // pick random color and size
+  const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  const size = SIZES[Math.floor(Math.random() * SIZES.length)];
+
+  let x = Math.floor(Math.random() * 100);
+
+  return {
+    color,
+    size,
+    x,
+    y: 0,
+  };
+};
+
+export const removeDot = (dots, index) => {
+  const newDots = [...dots];
+  newDots.splice(index, 1);
+  return newDots;
+};
+
+export const calculatePoints = (dot) => {
+  return MAX_POINTS - dot.size;
 };
